@@ -159,7 +159,7 @@ void TcpConnection::handleRead(Timestamp receiveTime) {
   ssize_t n = inputBuffer_.readFd(channel_->fd(), &savedErrno);
   if (n > 0) {
     // 已建立连接的用户，有可读事件发生了，调用用户传入的回调操作onMessage
-    messageCallback_(shared_from_this(), &inputBuffer_, receiveTime);
+    messageCallback_(shared_from_this(), &inputBuffer_, receiveTime);//onMessage
   } else if (n == 0) {
     handleClose();
   } else {

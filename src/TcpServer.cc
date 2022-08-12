@@ -86,8 +86,8 @@ void TcpServer::newConnection(int sockfd, const InetAddress &peerAddr) {
   connections_[connName] = conn;
   // 下面的回调都是用户设置给TcpServer=>TcpConnection=>Channel=>Poller=>notify
   // channel调用回调
-  conn->setConnectionCallback(connectionCallback_);
-  conn->setMessageCallback(messageCallback_);
+  conn->setConnectionCallback(connectionCallback_);//onConnection
+  conn->setMessageCallback(messageCallback_);//onMessage
   conn->setWriteCompleteCallback(writeCompleteCallback_);
 
   // 设置了如何关闭连接的回调   conn->shutDown()
